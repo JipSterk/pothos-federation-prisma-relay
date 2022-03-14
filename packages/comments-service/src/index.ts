@@ -2,7 +2,6 @@ import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageDisabled,
   ApolloServerPluginLandingPageGraphQLPlayground,
-  ApolloServerPluginUsageReporting,
   Context as ApolloServerContext,
 } from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
@@ -36,7 +35,6 @@ async function main(port: number): Promise<void> {
       NODE_ENV === "production"
         ? ApolloServerPluginLandingPageDisabled()
         : ApolloServerPluginLandingPageGraphQLPlayground(),
-      ApolloServerPluginUsageReporting(),
       ApolloServerPluginDrainHttpServer({ httpServer }),
     ],
   });
