@@ -1,4 +1,4 @@
-import { ApolloGateway } from "@apollo/gateway";
+import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
 import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageDisabled,
@@ -34,16 +34,18 @@ async function main(port: number): Promise<void> {
   );
 
   const gateway = new ApolloGateway({
-    serviceList: [
-      {
-        name: "users",
-        url: "http://localhost:4001/graphql",
-      },
-      {
-        name: "comments",
-        url: "http://localhost:4002/graphql",
-      },
-    ],
+    supergraphSdl: new IntrospectAndCompose({
+      subgraphs: [
+        {
+          name: "users",
+          url: "http://localhost:4001/graphql",
+        },
+        {
+          name: "comments",
+          url: "http://localhost:4002/graphql",
+        },
+      ],
+    }),
     debug: NODE_ENV !== "production",
   });
 
