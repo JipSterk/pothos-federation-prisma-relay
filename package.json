@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "start:services": "lerna run dev --scope='@example/*-service' --stream --parallel",
+    "start:gateway": "lerna run dev --scope=@example/gateway --stream",
+    "codegen:services": "lerna run codegen:schema --scope='@example/*-service' --stream --parallel",
+    "build": "lerna run build"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/.prisma/**",
+      "**/.prisma",
+      "**/@prisma/**",
+      "**/@prisma",
+      "**/prisma/**",
+      "**/prisma"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "4.0.0"
+  },
+  "resolutions": {
+    "graphql": "16.3.0"
+  }
+}
