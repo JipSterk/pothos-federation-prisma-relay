@@ -50,11 +50,11 @@ builder.queryType({
   },
 });
 
-builder.mutationType({
-  authScopes: {
-    public: true,
-  },
-});
+// builder.mutationType({
+//   authScopes: {
+//     public: true,
+//   },
+// });
 
 builder.scalarType("DateTime", {
   serialize: (date) => date.toISOString(),

@@ -1,4 +1,5 @@
 import { builder } from "../builder";
+import { UserRef } from "./user";
 
 builder.prismaNode("Comment", {
   findUnique: (id) => ({ id }),
@@ -7,7 +8,13 @@ builder.prismaNode("Comment", {
   },
   fields: (t) => ({
     body: t.exposeString("body"),
-    user: t.relation("user"),
+    user: t.field({
+      type: UserRef,
+      select: {
+        user: true,
+      },
+      resolve: (comment) => comment.user,
+    }),
     createdAt: t.expose("createdAt", {
       type: "DateTime",
     }),

@@ -51,12 +51,12 @@ builder.queryField("user", (t) =>
     type: "User",
     nullable: true,
     args: {
-      userId: t.arg.id(),
+      userId: t.arg.globalID(),
     },
     resolve: (query, _root, { userId }) => {
       return db.user.findUnique({
         ...query,
-        where: { id: userId },
+        where: { id: userId.id },
         rejectOnNotFound: true,
       });
     },
