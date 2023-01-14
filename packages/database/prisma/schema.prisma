@@ -1,0 +1,37 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+  // output        = "../node_modules/.prisma/client"
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+  // clientOutput = ".prisma/client"
+  output   = "../src/prisma-pothos-types.ts"
+}
+
+model Comment {
+  pk        Int      @id @default(autoincrement())
+  id        String   @unique @default(uuid())
+  userPk    Int
+  user      User     @relation(fields: [userPk], references: [pk])
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  pk        Int       @id @default(autoincrement())
+  id        String    @unique @default(uuid())
+  email     String    @unique
+  firstName String
+  lastName  String
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}

@@ -1,0 +1,18 @@
+
+> @example/accounts-service@0.0.1 build /Users/jipsterk/Repos/Personal/pothos-federation-prisma-relay/apps/accounts-service
+> tsc
+
+src/builder.ts(2,30): error TS2307: Cannot find module '@example/database/prisma-pothos-types' or its corresponding type declarations.
+src/schema/index.ts(4,14): error TS2742: The inferred type of 'schema' cannot be named without a reference to '.pnpm/graphql@16.6.0/node_modules/graphql'. This is likely not portable. A type annotation is necessary.
+src/schema/user.ts(23,31): error TS2749: 'User' refers to a value, but is being used as a type here. Did you mean 'typeof User'?
+src/schema/user.ts(35,5): error TS2322: Type '(query: { include?: any; select?: any; }, _root: {}, { email, firstName, lastName }: InputShapeFromFields<{ email: InputFieldRef<string, "Arg">; firstName: InputFieldRef<string, "Arg">; lastName: InputFieldRef<string, "Arg">; }>) => Prisma__UserClient<...>' is not assignable to type 'PrismaFieldResolver<ExtendDefaultTypes<{ DefaultInputFieldRequiredness: true; PrismaTypes: PrismaTypes; Context: Context; Scalars: { ID: { Input: string; Output: string | number; }; DateTime: { Input: Date; Output: Date; }; }; AuthScopes: { ...; }; }>, ... 5 more ..., Prisma__UserClient<...>>'.
+  Type 'Prisma__UserClient<User, never>' is not assignable to type 'MaybePromise<readonly unknown[]> | null | undefined'.
+    Type 'Prisma__UserClient<User, never>' is not assignable to type 'Promise<readonly unknown[]>'.
+      Types of property 'then' are incompatible.
+        Type '<TResult1 = User, TResult2 = never>(onfulfilled?: ((value: User) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<...>) | null | undefined) => Promise<...>' is not assignable to type '<TResult1 = readonly unknown[], TResult2 = never>(onfulfilled?: ((value: readonly unknown[]) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => Promise<...>'.
+          Types of parameters 'onfulfilled' and 'onfulfilled' are incompatible.
+            Types of parameters 'value' and 'value' are incompatible.
+              Type 'User' is missing the following properties from type 'readonly unknown[]': length, concat, join, slice, and 19 more.
+src/schema/user.ts(55,5): error TS2322: Type '(query: { include?: any; select?: any; }, _root: {}, { userId }: InputShapeFromFields<{ userId: InputFieldRef<{ typename: string; id: string; }, "Arg">; }>) => Prisma__UserClient<...>' is not assignable to type 'PrismaFieldResolver<ExtendDefaultTypes<{ DefaultInputFieldRequiredness: true; PrismaTypes: PrismaTypes; Context: Context; Scalars: { ID: { Input: string; Output: string | number; }; DateTime: { Input: Date; Output: Date; }; }; AuthScopes: { ...; }; }>, ... 5 more ..., Prisma__UserClient<...>>'.
+  Type 'Prisma__UserClient<User, never>' is not assignable to type 'MaybePromise<readonly unknown[]> | null | undefined'.
+ ELIFECYCLE  Command failed with exit code 1.

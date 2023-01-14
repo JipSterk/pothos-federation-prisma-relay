@@ -1,0 +1,13 @@
+
+> @example/database@0.0.1 build /Users/jipsterk/Repos/Personal/pothos-federation-prisma-relay/packages/database
+> pnpm build:cjs && pnpm build:dts
+
+
+> @example/database@0.0.1 build:cjs /Users/jipsterk/Repos/Personal/pothos-federation-prisma-relay/packages/database
+> swc src -d lib --config-file ../../.swcrc
+
+Successfully compiled: 1 file with swc (12.12ms)
+
+> @example/database@0.0.1 build:dts /Users/jipsterk/Repos/Personal/pothos-federation-prisma-relay/packages/database
+> tsc
+

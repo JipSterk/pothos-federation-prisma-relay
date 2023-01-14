@@ -1,0 +1,5 @@
+{
+  "extends": "@example/tsconfig/node16.json",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
