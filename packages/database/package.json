@@ -11,12 +11,13 @@
     }
   },
   "scripts": {
+    "build:clean": "git clean -dfX esm lib",
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
     "db:seed": "prisma db seed",
-    "build": "pnpm build:cjs && pnpm build:dts",
+    "build": "pnpm build:clean && pnpm build:cjs && pnpm build:dts",
     "build:cjs": "swc src -d lib --config-file ../../.swcrc",
     "build:dts": "tsc"
   },

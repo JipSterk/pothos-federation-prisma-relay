@@ -1,5 +1,5 @@
 /* eslint-disable */
-import type { Prisma, Comment, User } from "/Users/jipsterk/Repos/Personal/pothos-federation-prisma-relay/node_modules/.pnpm/@prisma+client@4.7.1_prisma@4.7.1/node_modules/@prisma/client";
+import type { Prisma, Comment, User } from ".prisma/client";
 export default interface PrismaTypes {
     Comment: {
         Name: "Comment";
