@@ -53,10 +53,9 @@ builder.queryField("user", (t) =>
       userId: t.arg.globalID(),
     },
     resolve: (query, _root, { userId }) => {
-      return db.user.findUnique({
+      return db.user.findUniqueOrThrow({
         ...query,
         where: { id: userId.id },
-        rejectOnNotFound: true,
       });
     },
   })

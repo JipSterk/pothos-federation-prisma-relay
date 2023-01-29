@@ -5,13 +5,16 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsnd --rs --inspect=5000 --rs src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsnd --rs --inspect=5000 src/index.ts",
     "start": "node ./dist/index.js",
-    "build": "tsc"
+    "build": "pnpm build:clean && pnpm build:cjs",
+    "build:clean": "git clean -dfX dist",
+    "build:cjs": "swc src -d dist --config-file ../../.swcrc"
   },
   "dependencies": {
-    "@apollo/gateway": "2.2.3",
-    "@apollo/server": "4.3.0",
+    "@apollo/gateway": "2.3.0",
+    "@apollo/server": "4.3.2",
+    "body-parser": "1.20.1",
     "cors": "2.8.5",
     "dotenv": "16.0.3",
     "express": "4.18.2",
@@ -21,7 +24,7 @@
     "@example/tsconfig": "0.0.1",
     "@types/body-parser": "1.19.2",
     "@types/cors": "2.8.13",
-    "@types/express": "4.17.15",
+    "@types/express": "4.17.16",
     "@types/node": "18.11.18",
     "cross-env": "7.0.3",
     "ts-node-dev": "2.0.0",

@@ -1,5 +1,5 @@
+import type PrismaTypes from "@example/database";
 import { db } from "@example/database";
-import type PrismaTypes from "@example/database/src";
 import SchemaBuilder from "@pothos/core";
 import DirectivesPlugin from "@pothos/plugin-directives";
 import FederationPlugin from "@pothos/plugin-federation";
@@ -62,9 +62,8 @@ export const builder = new SchemaBuilder<{
     },
     nodesQueryOptions: {
       shareable: true,
-      resolve: (_parent, { ids }) => {
-        return ids.map(({ id, typename }) => resolveNode(typename, id));
-      },
+      resolve: (_parent, { ids }) =>
+        ids.map(({ id, typename }) => resolveNode(typename, id)),
     },
   },
 });
