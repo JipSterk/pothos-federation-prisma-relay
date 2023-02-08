@@ -1,10 +1,5 @@
-directive @inaccessible on ARGUMENT_DEFINITION | ENUM | ENUM_VALUE | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | INTERFACE | OBJECT | SCALAR | UNION
-
-directive @link(import: [link__Import], url: String!) on SCHEMA
-
-directive @override(from: String!) on FIELD_DEFINITION
-
-directive @shareable on FIELD_DEFINITION | OBJECT
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@shareable", "@inaccessible", "@tag", "@provides", "@requires", "@external", "@extends", "@override"])
 
 scalar DateTime
 
@@ -17,8 +12,8 @@ interface Node {
 }
 
 type Query {
-  node(id: ID!): Node
-  nodes(ids: [ID!]!): [Node]!
+  node(id: ID!): Node @shareable
+  nodes(ids: [ID!]!): [Node]! @shareable
   user(userId: ID!): User
 }
 
@@ -32,5 +27,3 @@ type User implements Node
   createdAt: DateTime!
   updatedAt: DateTime!
 }
-
-scalar link__Import

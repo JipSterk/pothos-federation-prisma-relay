@@ -3,3 +3,4 @@ dist
 lib
 dts
 .turbo
+.DS_Store

@@ -45,10 +45,9 @@ async function main(port: number): Promise<void> {
     })
   );
 
-  const listener = httpServer.listen({ port }, () => {
-    const { address, port } = listener.address() as AddressInfo;
-    console.log(`Accounts service ready at http://${address}:${port}`);
-  });
+  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
+  const { address } = httpServer.address() as AddressInfo;
+  console.log(`Accounts service ready at http://${address}:${port}`);
 }
 
 main(Number(PORT)).catch((error) => {

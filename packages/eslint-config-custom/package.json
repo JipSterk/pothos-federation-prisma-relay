@@ -7,6 +7,7 @@
     "eslint-config-next": "13.1.6",
     "eslint-config-prettier": "8.6.0",
     "eslint-config-turbo": "0.0.7",
+    "eslint-plugin-react": "7.32.2",
     "eslint-plugin-turbo": "0.0.7"
   }
 }

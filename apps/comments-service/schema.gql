@@ -1,10 +1,5 @@
-directive @inaccessible on ARGUMENT_DEFINITION | ENUM | ENUM_VALUE | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | INTERFACE | OBJECT | SCALAR | UNION
-
-directive @link(import: [link__Import], url: String!) on SCHEMA
-
-directive @override(from: String!) on FIELD_DEFINITION
-
-directive @shareable on FIELD_DEFINITION | OBJECT
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@shareable", "@inaccessible", "@tag", "@provides", "@requires", "@external", "@extends", "@override"])
 
 type Comment implements Node {
   id: ID!
@@ -21,8 +16,8 @@ interface Node {
 }
 
 type Query {
-  node(id: ID!): Node
-  nodes(ids: [ID!]!): [Node]!
+  node(id: ID!): Node @shareable
+  nodes(ids: [ID!]!): [Node]! @shareable
 }
 
 type User
@@ -32,5 +27,3 @@ type User
   id: ID! @external
   comments: [Comment!]!
 }
-
-scalar link__Import

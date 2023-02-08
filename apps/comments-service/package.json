@@ -13,32 +13,32 @@
     "build:cjs": "swc src -d dist --config-file ../../.swcrc"
   },
   "dependencies": {
-    "@apollo/server": "4.3.2",
-    "@apollo/subgraph": "2.3.0",
-    "@example/database": "0.0.1",
-    "@pothos/core": "3.24.0",
-    "@pothos/plugin-directives": "3.9.1",
-    "@pothos/plugin-federation": "3.7.0",
-    "@pothos/plugin-prisma": "3.40.1",
-    "@pothos/plugin-relay": "3.33.1",
-    "@pothos/plugin-scope-auth": "3.17.0",
+    "@apollo/server": "4.3.3",
+    "@apollo/subgraph": "2.3.1",
+    "@example/database": "workspace:0.0.1",
+    "@pothos/core": "3.25.0",
+    "@pothos/plugin-directives": "3.9.2",
+    "@pothos/plugin-federation": "3.9.1",
+    "@pothos/plugin-prisma": "3.41.0",
+    "@pothos/plugin-relay": "3.35.0",
+    "@pothos/plugin-scope-auth": "3.18.0",
     "@pothos/plugin-simple-objects": "3.6.7",
-    "@pothos/plugin-validation": "3.8.7",
+    "@pothos/plugin-validation": "3.9.0",
     "body-parser": "1.20.1",
     "dotenv": "16.0.3",
     "express": "4.18.2",
     "graphql": "16.6.0",
-    "zod": "3.20.2"
+    "zod": "3.20.3"
   },
   "devDependencies": {
-    "@example/tsconfig": "0.0.1",
+    "@example/tsconfig": "workspace:0.0.1",
     "@types/body-parser": "1.19.2",
-    "@types/express": "4.17.16",
-    "@types/node": "18.11.18",
+    "@types/express": "4.17.17",
+    "@types/node": "18.13.0",
     "cross-env": "7.0.3",
-    "eslint": "8.32.0",
+    "eslint": "8.33.0",
     "ts-node-dev": "2.0.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   },
   "resolutions": {
     "graphql": "16.6.0",
