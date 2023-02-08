@@ -41,7 +41,6 @@ async function main(port: number): Promise<void> {
   const server = new ApolloServer({
     gateway,
     stopOnTerminationSignals: true,
-
     plugins: [
       NODE_ENV === "production"
         ? ApolloServerPluginLandingPageProductionDefault()
@@ -72,10 +71,9 @@ async function main(port: number): Promise<void> {
     })
   );
 
-  const listener = httpServer.listen({ port }, () => {
-    const { address, port } = listener.address() as AddressInfo;
-    console.log(`Apollo Gateway ready at http://${address}:${port}`);
-  });
+  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
+  const { address } = httpServer.address() as AddressInfo;
+  console.log(`Apollo Gateway ready at http://${address}:${port}`);
 }
 
 main(Number(PORT)).catch((error) => {
