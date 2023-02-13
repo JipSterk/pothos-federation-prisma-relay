@@ -12,7 +12,7 @@
     "build:cjs": "swc src -d dist --config-file ../../.swcrc"
   },
   "dependencies": {
-    "@apollo/gateway": "2.3.1",
+    "@apollo/gateway": "2.3.2",
     "@apollo/server": "4.3.3",
     "body-parser": "1.20.1",
     "cors": "2.8.5",

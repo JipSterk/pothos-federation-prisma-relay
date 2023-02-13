@@ -16,9 +16,9 @@
   "devDependencies": {
     "@example/eslint-config-custom": "workspace:0.0.1",
     "@swc/cli": "0.1.61",
-    "@swc/core": "1.3.32",
+    "@swc/core": "1.3.35",
     "@types/node": "18.13.0",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "prettier": "2.8.4",
     "turbo": "1.7.4",
     "typescript": "4.9.5"

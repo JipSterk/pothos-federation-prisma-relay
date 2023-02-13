@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ButtonHTMLAttributes } from "react";
 
 const buttonStyles = cva(
-  "inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ",
+  "inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
   {
     variants: {
       intent: {
