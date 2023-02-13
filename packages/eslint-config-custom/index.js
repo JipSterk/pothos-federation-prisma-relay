@@ -2,9 +2,19 @@
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
-  extends: ["turbo", "prettier"],
+  extends: ["next", "turbo", "prettier"],
+  settings: {
+    next: {
+      rootDir: ["apps/*/", "packages/*/"],
+    },
+  },
+  rules: {
+    "@next/next/no-html-link-for-pages": "off",
+    "react/jsx-key": "off",
+  },
   parserOptions: {
-    ecmaVersion: 2019,
-    sourceType: "module",
+    babelOptions: {
+      presets: [require.resolve("next/babel")],
+    },
   },
 };

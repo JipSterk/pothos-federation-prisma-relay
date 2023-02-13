@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@example/tsconfig/node16.json",
-  "include": ["src/**/*"],
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

@@ -3,6 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_BACKEND_URL"],
       "outputs": ["dist/**", ".next/**"]
     },
     "db:migrate:deploy": {},

@@ -9,15 +9,14 @@ import { Button } from ".";
 const meta: Meta = {
   title: "Button",
   component: Button,
-  args: {
-    onClick: action("pressed"),
-  },
 };
 
 export default meta;
 
 const Template: StoryFn<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
+  <Button onClick={action("pressed")} {...args}>
+    Button
+  </Button>
 );
 
 /**

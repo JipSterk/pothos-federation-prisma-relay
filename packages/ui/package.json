@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "types": "./dts/index.d.ts",
   "exports": {
-    "require": {
+    "default": {
       "types": "./dts/index.d.ts",
       "default": "./lib/index.js"
     }
@@ -19,6 +19,7 @@
     "build:dts": "tsc"
   },
   "dependencies": {
+    "@headlessui/react": "1.7.10",
     "class-variance-authority": "0.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -35,11 +36,11 @@
     "@storybook/react": "7.0.0-beta.40",
     "@storybook/react-vite": "7.0.0-beta.40",
     "@storybook/testing-library": "0.0.14-next.1",
-    "@types/react": "18.0.27",
+    "@types/react": "18.0.28",
     "@types/react-dom": "18.0.10",
     "@vitejs/plugin-react-swc": "3.1.0",
     "autoprefixer": "10.4.13",
-    "eslint": "8.33.0",
+    "eslint": "8.34.0",
     "postcss": "8.4.21",
     "storybook": "7.0.0-beta.40",
     "storybook-tailwind-dark-mode": "1.0.15",
