@@ -1,0 +1,10 @@
+{
+  "name": "@example/jest-config",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "@swc/jest": "0.2.24",
+    "jest-config": "29.4.3"
+  }
+}
