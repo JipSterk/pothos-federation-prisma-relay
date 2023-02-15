@@ -6,6 +6,11 @@
       "env": ["NEXT_PUBLIC_BACKEND_URL"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "test": {},
+    "codegen": {
+      "dependsOn": ["codegen:schema", "codegen:supergraph"],
+      "outputs": ["schema.gql", "supergraph.gql"]
+    },
     "db:migrate:deploy": {},
     "db:generate": {
       "cache": false

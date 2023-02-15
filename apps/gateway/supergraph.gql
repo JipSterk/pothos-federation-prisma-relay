@@ -1,0 +1,104 @@
+schema
+  @link(url: "https://specs.apollo.dev/link/v1.0")
+  @link(url: "https://specs.apollo.dev/join/v0.3", for: EXECUTION)
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @join__enumValue(graph: join__Graph!) repeatable on ENUM_VALUE
+
+directive @join__field(graph: join__Graph, requires: join__FieldSet, provides: join__FieldSet, type: String, external: Boolean, override: String, usedOverridden: Boolean) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__implements(graph: join__Graph!, interface: String!) repeatable on OBJECT | INTERFACE
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet, extension: Boolean! = false, resolvable: Boolean! = true, isInterfaceObject: Boolean! = false) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
+
+directive @join__unionMember(graph: join__Graph!, member: String!) repeatable on UNION
+
+directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
+
+type Comment implements Node
+  @join__implements(graph: COMMENTS_SERVICE, interface: "Node")
+  @join__type(graph: COMMENTS_SERVICE)
+{
+  id: ID!
+  body: String!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+scalar DateTime
+  @join__type(graph: ACCOUNTS_SERVICE)
+  @join__type(graph: COMMENTS_SERVICE)
+  @join__type(graph: NODE_SERVICE)
+
+scalar join__FieldSet
+
+enum join__Graph {
+  ACCOUNTS_SERVICE @join__graph(name: "accounts-service", url: "http://localhost:2001/graphql")
+  COMMENTS_SERVICE @join__graph(name: "comments-service", url: "http://localhost:2002/graphql")
+  NODE_SERVICE @join__graph(name: "node-service", url: "http://localhost:2003/graphql")
+}
+
+scalar link__Import
+
+enum link__Purpose {
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+
+  """
+  `EXECUTION` features provide metadata necessary for operation execution.
+  """
+  EXECUTION
+}
+
+type Mutation
+  @join__type(graph: ACCOUNTS_SERVICE)
+{
+  createUser(email: String!, firstName: String!, lastName: String!): User!
+}
+
+interface Node
+  @join__type(graph: ACCOUNTS_SERVICE)
+  @join__type(graph: COMMENTS_SERVICE)
+  @join__type(graph: NODE_SERVICE)
+{
+  id: ID!
+}
+
+type Number implements Node
+  @join__implements(graph: NODE_SERVICE, interface: "Node")
+  @join__type(graph: NODE_SERVICE)
+{
+  id: ID!
+}
+
+type Query
+  @join__type(graph: ACCOUNTS_SERVICE)
+  @join__type(graph: COMMENTS_SERVICE)
+  @join__type(graph: NODE_SERVICE)
+{
+  user(userId: ID!): User @join__field(graph: ACCOUNTS_SERVICE)
+  node(id: ID!): Node @join__field(graph: NODE_SERVICE)
+  nodes(ids: [ID!]!): [Node]! @join__field(graph: NODE_SERVICE)
+}
+
+type User implements Node
+  @join__implements(graph: ACCOUNTS_SERVICE, interface: "Node")
+  @join__type(graph: ACCOUNTS_SERVICE, key: "id")
+  @join__type(graph: COMMENTS_SERVICE, key: "id", extension: true)
+{
+  id: ID!
+  email: String! @join__field(graph: ACCOUNTS_SERVICE)
+  firstName: String! @join__field(graph: ACCOUNTS_SERVICE)
+  lastName: String! @join__field(graph: ACCOUNTS_SERVICE)
+  createdAt: DateTime! @join__field(graph: ACCOUNTS_SERVICE)
+  updatedAt: DateTime! @join__field(graph: ACCOUNTS_SERVICE)
+  comments: [Comment!]! @join__field(graph: COMMENTS_SERVICE)
+}

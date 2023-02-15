@@ -1,10 +1,6 @@
 import type PrismaTypes from "@example/database";
 import { db } from "@example/database";
-import SchemaBuilder, {
-  brandWithType,
-  OutputType,
-  SchemaTypes,
-} from "@pothos/core";
+import SchemaBuilder from "@pothos/core";
 import DirectivesPlugin from "@pothos/plugin-directives";
 import FederationPlugin from "@pothos/plugin-federation";
 import PrismaPlugin from "@pothos/plugin-prisma";
@@ -13,19 +9,6 @@ import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
 import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
 import ValidationPlugin from "@pothos/plugin-validation";
 import { Context } from "./types/Context";
-
-async function resolveNode(typename: string, id: string) {
-  switch (typename) {
-    case "User":
-      const user = await db.user.findFirstOrThrow({ where: { id } });
-      brandWithType(user, typename as OutputType<SchemaTypes>);
-      return user;
-    default:
-      throw new Error(
-        `cannot resolve node for type: ${typename} with the id: ${id}`
-      );
-  }
-}
 
 export const builder = new SchemaBuilder<{
   DefaultInputFieldRequiredness: true;
@@ -58,19 +41,8 @@ export const builder = new SchemaBuilder<{
   relayOptions: {
     clientMutationId: "omit",
     cursorType: "String",
-    nodeQueryOptions: {
-      shareable: true,
-      resolve: (_parent, { id: globalId }) => {
-        const { id, typename } = globalId;
-
-        return resolveNode(typename, id);
-      },
-    },
-    nodesQueryOptions: {
-      shareable: true,
-      resolve: (_parent, { ids }) =>
-        ids.map(({ id, typename }) => resolveNode(typename, id)),
-    },
+    nodeQueryOptions: false,
+    nodesQueryOptions: false,
   },
 });
 

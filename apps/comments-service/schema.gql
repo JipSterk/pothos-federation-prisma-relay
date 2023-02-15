@@ -15,11 +15,6 @@ interface Node {
   id: ID!
 }
 
-type Query {
-  node(id: ID!): Node @shareable
-  nodes(ids: [ID!]!): [Node]! @shareable
-}
-
 type User
   @key(fields: "id")
   @extends

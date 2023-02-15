@@ -1,0 +1,10 @@
+federation_version: =2.3.0
+subgraphs:
+  accounts-service:
+    routing_url: http://localhost:2001/graphql
+    schema:
+      file: ./apps/accounts-service/schema.gql
+  comments-service:
+    routing_url: http://localhost:2002/graphql
+    schema:
+      file: ./apps/comments-service/schema.gql

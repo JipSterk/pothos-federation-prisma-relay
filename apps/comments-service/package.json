@@ -1,7 +1,7 @@
 {
   "name": "@example/comments-service",
-  "private": true,
   "version": "0.0.1",
+  "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -13,7 +13,7 @@
     "build:cjs": "swc src -d dist --config-file ../../.swcrc"
   },
   "dependencies": {
-    "@apollo/server": "4.3.3",
+    "@apollo/server": "4.4.0",
     "@apollo/subgraph": "2.3.2",
     "@example/database": "workspace:0.0.1",
     "@pothos/core": "3.25.0",

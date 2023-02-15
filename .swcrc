@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/swcrc",
-  "exclude": [".stories.tsx"],
+  "exclude": [".stories.tsx", ".test.tsx"],
   "jsc": {
     "parser": {
       "syntax": "typescript"
