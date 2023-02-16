@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@example/ui";
+import { Button } from "@acme/ui";
 import { useTheme } from "next-themes";
 
 export function ThemeSwitcher() {

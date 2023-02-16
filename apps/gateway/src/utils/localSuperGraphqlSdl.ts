@@ -1,7 +1,7 @@
 import { SupergraphSdlHook } from "@apollo/gateway";
 import chokidar from "chokidar";
-import { readFile } from "fs/promises";
-import { resolve } from "path";
+import fs from "fs/promises";
+import path from "path";
 
 /**
  * get supergraph sdl for development purposes
@@ -12,12 +12,15 @@ export const supergraphSdl: SupergraphSdlHook = async ({
   update,
   healthCheck,
 }): ReturnType<SupergraphSdlHook> => {
-  const superGraphqlSdlLocation = resolve(__dirname, "../../supergraph.gql");
+  const superGraphqlSdlLocation = path.resolve(
+    __dirname,
+    "../../supergraph.gql"
+  );
   const watcher = chokidar.watch(superGraphqlSdlLocation);
 
   watcher.on("change", async () => {
     try {
-      const updatedSupergraphSdl = await readFile(
+      const updatedSupergraphSdl = await fs.readFile(
         superGraphqlSdlLocation,
         "utf-8"
       );
@@ -29,7 +32,7 @@ export const supergraphSdl: SupergraphSdlHook = async ({
   });
 
   return {
-    supergraphSdl: await readFile(superGraphqlSdlLocation, "utf-8"),
+    supergraphSdl: await fs.readFile(superGraphqlSdlLocation, "utf-8"),
     cleanup: async () => {
       await watcher.close();
     },

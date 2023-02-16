@@ -34,14 +34,12 @@ type Comment implements Node
 scalar DateTime
   @join__type(graph: ACCOUNTS_SERVICE)
   @join__type(graph: COMMENTS_SERVICE)
-  @join__type(graph: NODE_SERVICE)
 
 scalar join__FieldSet
 
 enum join__Graph {
   ACCOUNTS_SERVICE @join__graph(name: "accounts-service", url: "http://localhost:2001/graphql")
   COMMENTS_SERVICE @join__graph(name: "comments-service", url: "http://localhost:2002/graphql")
-  NODE_SERVICE @join__graph(name: "node-service", url: "http://localhost:2003/graphql")
 }
 
 scalar link__Import
@@ -67,14 +65,6 @@ type Mutation
 interface Node
   @join__type(graph: ACCOUNTS_SERVICE)
   @join__type(graph: COMMENTS_SERVICE)
-  @join__type(graph: NODE_SERVICE)
-{
-  id: ID!
-}
-
-type Number implements Node
-  @join__implements(graph: NODE_SERVICE, interface: "Node")
-  @join__type(graph: NODE_SERVICE)
 {
   id: ID!
 }
@@ -82,11 +72,8 @@ type Number implements Node
 type Query
   @join__type(graph: ACCOUNTS_SERVICE)
   @join__type(graph: COMMENTS_SERVICE)
-  @join__type(graph: NODE_SERVICE)
 {
   user(userId: ID!): User @join__field(graph: ACCOUNTS_SERVICE)
-  node(id: ID!): Node @join__field(graph: NODE_SERVICE)
-  nodes(ids: [ID!]!): [Node]! @join__field(graph: NODE_SERVICE)
 }
 
 type User implements Node

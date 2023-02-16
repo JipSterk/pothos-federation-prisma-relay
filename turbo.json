@@ -4,12 +4,22 @@
     "build": {
       "dependsOn": ["^build"],
       "env": ["NEXT_PUBLIC_BACKEND_URL"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["lib/**", "dts/**", "dist/**", ".next/**"]
     },
     "test": {},
+    "codegen:web": {
+      "dependsOn": ["@acme/gateway#codegen:supergraph"],
+      "env": ["NEXT_PUBLIC_BACKEND_URL"]
+    },
+    "codegen:supergraph": {
+      "dependsOn": [
+        "@acme/accounts-service#codegen:schema",
+        "@acme/comments-service#codegen:schema"
+      ]
+    },
+    "codegen:schema": {},
     "codegen": {
-      "dependsOn": ["codegen:schema", "codegen:supergraph"],
-      "outputs": ["schema.gql", "supergraph.gql"]
+      "dependsOn": ["codegen:schema", "codegen:supergraph", "codegen:web"]
     },
     "db:migrate:deploy": {},
     "db:generate": {

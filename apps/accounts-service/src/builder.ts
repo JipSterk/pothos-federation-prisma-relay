@@ -1,5 +1,5 @@
-import type PrismaTypes from "@example/database";
-import { db } from "@example/database";
+import type PrismaTypes from "@acme/database";
+import { db } from "@acme/database";
 import SchemaBuilder from "@pothos/core";
 import DirectivesPlugin from "@pothos/plugin-directives";
 import FederationPlugin from "@pothos/plugin-federation";

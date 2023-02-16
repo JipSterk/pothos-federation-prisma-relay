@@ -1,6 +1,6 @@
 const nextJest = require("next/jest");
 const { name } = require("./package.json");
-const config = require("@example/jest-config");
+const config = require("@acme/jest-config");
 
 const createJestConfig = nextJest({
   dir: "./",

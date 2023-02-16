@@ -12,6 +12,6 @@ module.exports = {
     "^.+\\.tsx?$": ["@swc/jest", { ...config }],
   },
   testRegex: "/__tests__/.*\\.test\\.tsx?$",
-  testPathIgnorePatterns: ["/node_modules/", "/lib/"],
+  testPathIgnorePatterns: ["/node_modules/"],
   moduleFileExtensions: [...defaults.moduleFileExtensions, "ts", "tsx"],
 };

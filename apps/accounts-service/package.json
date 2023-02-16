@@ -1,5 +1,5 @@
 {
-  "name": "@example/accounts-service",
+  "name": "@acme/accounts-service",
   "version": "0.0.1",
   "private": true,
   "main": "./dist/index.js",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@apollo/server": "4.4.0",
     "@apollo/subgraph": "2.3.2",
-    "@example/database": "workspace:0.0.1",
+    "@acme/database": "workspace:0.0.1",
     "@pothos/core": "3.25.0",
     "@pothos/plugin-directives": "3.9.2",
     "@pothos/plugin-federation": "3.9.1",
@@ -31,8 +31,8 @@
     "zod": "3.20.6"
   },
   "devDependencies": {
-    "@example/eslint-config-custom": "workspace:0.0.1",
-    "@example/tsconfig": "workspace:0.0.1",
+    "@acme/eslint-config-custom": "workspace:0.0.1",
+    "@acme/tsconfig": "workspace:0.0.1",
     "@types/body-parser": "1.19.2",
     "@types/express": "4.17.17",
     "@types/node": "18.13.0",
@@ -40,9 +40,5 @@
     "eslint": "8.34.0",
     "ts-node-dev": "2.0.0",
     "typescript": "4.9.5"
-  },
-  "resolutions": {
-    "graphql": "16.6.0",
-    "typescript": "4.9.4"
   }
 }

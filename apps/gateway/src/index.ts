@@ -12,6 +12,7 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 import { AddressInfo } from "net";
+import { supergraphSdl } from "./utils/localSuperGraphqlSdl";
 
 const { NODE_ENV, PORT } = process.env;
 
@@ -23,7 +24,7 @@ async function main(port: number): Promise<void> {
   const httpServer = http.createServer(app);
 
   const gateway = new ApolloGateway({
-    supergraphSdl: (await import("./utils/localSuperGraphqlSdl")).supergraphSdl,
+    supergraphSdl,
     debug: NODE_ENV !== "production",
   });
 

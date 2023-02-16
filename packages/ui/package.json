@@ -1,5 +1,5 @@
 {
-  "name": "@example/ui",
+  "name": "@acme/ui",
   "version": "0.0.1",
   "private": true,
   "main": "./lib/index.js",
@@ -26,10 +26,10 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@example/eslint-config-custom": "workspace:0.0.1",
-    "@example/jest-config": "workspace:0.0.1",
-    "@example/tailwind-config": "workspace:0.0.1",
-    "@example/tsconfig": "workspace:0.0.1",
+    "@acme/eslint-config-custom": "workspace:0.0.1",
+    "@acme/jest-config": "workspace:0.0.1",
+    "@acme/tailwind-config": "workspace:0.0.1",
+    "@acme/tsconfig": "workspace:0.0.1",
     "@storybook/addon-actions": "7.0.0-beta.40",
     "@storybook/addon-essentials": "7.0.0-beta.40",
     "@storybook/addon-links": "7.0.0-beta.40",

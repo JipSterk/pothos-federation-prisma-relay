@@ -1,4 +1,4 @@
-import { db, User } from "@example/database";
+import { db, User } from "@acme/database";
 import { builder } from "../builder";
 
 const User = builder.prismaNode("User", {

@@ -11,7 +11,11 @@ async function main() {
       id: faker.datatype.uuid(),
       firstName,
       lastName,
+<<<<<<< Updated upstream
       email: faker.internet.email(firstName, lastName, "acme"),
+=======
+      email: faker.internet.email(firstName, lastName, "acme.com"),
+>>>>>>> Stashed changes
       comments: {
         create: [
           {
