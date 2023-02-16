@@ -1,5 +1,5 @@
 {
-  "name": "@example/database",
+  "name": "@acme/database",
   "version": "0.0.1",
   "private": true,
   "main": "./lib/index.js",
@@ -28,8 +28,9 @@
     "@prisma/client": "4.10.1"
   },
   "devDependencies": {
-    "@example/eslint-config-custom": "workspace:0.0.1",
-    "@example/tsconfig": "workspace:0.0.1",
+    "@acme/eslint-config-custom": "workspace:0.0.1",
+    "@acme/tsconfig": "workspace:0.0.1",
+    "@faker-js/faker": "^7.6.0",
     "@pothos/plugin-prisma": "3.41.0",
     "@types/node": "18.13.0",
     "eslint": "8.34.0",

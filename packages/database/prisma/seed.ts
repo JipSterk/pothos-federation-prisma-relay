@@ -1,15 +1,21 @@
+import { faker } from "@faker-js/faker";
 import { db } from "../src";
+faker.seed(123);
 
 async function main() {
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.firstName();
+
   const user = await db.user.create({
     data: {
-      email: "jipsterk1998@gmail.com",
-      firstName: "jip",
-      lastName: "sterk",
+      id: faker.datatype.uuid(),
+      firstName,
+      lastName,
+      email: faker.internet.email(firstName, lastName, "acme"),
       comments: {
         create: [
           {
-            body: "hi",
+            body: faker.lorem.paragraph(3),
           },
         ],
       },
