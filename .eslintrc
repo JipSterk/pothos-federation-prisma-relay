@@ -1,4 +1,9 @@
 {
   "root": true,
-  "extends": ["@acme/eslint-config-custom"]
+  "extends": ["@acme/eslint-config"],
+  "settings": {
+    "next": {
+      "rootDir": ["apps/*/"]
+    }
+  }
 }

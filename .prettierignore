@@ -1,1 +1,2 @@
 packages/database/src/prisma-pothos-types.ts
+apps/web/src/**/__generated__/**

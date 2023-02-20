@@ -7,15 +7,18 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsnd --rs --inspect=5001 src/index.ts",
     "start": "node ./dist/index.js",
+    "codegen:testing": "gql-gen",
     "codegen:schema": "rover subgraph introspect http://localhost:2001/graphql > schema.gql",
+    "test": "jest",
     "build": "pnpm build:clean && pnpm build:cjs",
     "build:clean": "git clean -dfX dist",
-    "build:cjs": "swc src -d dist --config-file ../../.swcrc"
+    "build:cjs": "swc src -d dist --config-file ../../.swcrc",
+    "lint": "eslint"
   },
   "dependencies": {
+    "@acme/database": "workspace:0.0.1",
     "@apollo/server": "4.4.0",
     "@apollo/subgraph": "2.3.2",
-    "@acme/database": "workspace:0.0.1",
     "@pothos/core": "3.25.0",
     "@pothos/plugin-directives": "3.9.2",
     "@pothos/plugin-federation": "3.9.1",
@@ -31,13 +34,18 @@
     "zod": "3.20.6"
   },
   "devDependencies": {
-    "@acme/eslint-config-custom": "workspace:0.0.1",
+    "@acme/eslint-config": "workspace:0.0.1",
+    "@acme/jest-config": "workspace:0.0.1",
     "@acme/tsconfig": "workspace:0.0.1",
+    "@faker-js/faker": "7.6.0",
     "@types/body-parser": "1.19.2",
     "@types/express": "4.17.17",
-    "@types/node": "18.13.0",
+    "@types/jest": "29.4.0",
+    "@types/node": "18.14.0",
     "cross-env": "7.0.3",
     "eslint": "8.34.0",
+    "graphql-tag": "2.12.6",
+    "jest": "29.4.3",
     "ts-node-dev": "2.0.0",
     "typescript": "4.9.5"
   }

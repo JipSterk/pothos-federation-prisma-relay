@@ -4,7 +4,7 @@ const config = require("@acme/tailwind-config");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   ...config,
-  content: [...config.content, "../../packages/ui/**/*.js"],
+  content: [...config.content, "../../packages/ui/lib/**/*.js"],
   theme: {
     extend: {
       fontFamily: {

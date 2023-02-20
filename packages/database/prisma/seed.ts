@@ -2,31 +2,29 @@ import { faker } from "@faker-js/faker";
 import { db } from "../src";
 faker.seed(123);
 
+const AMOUT_OF_USERS = Number(process.env.AMOUNT_OF_USERS ?? 100);
+
 async function main() {
-  const firstName = faker.name.firstName();
-  const lastName = faker.name.firstName();
+  for (let i = 0; i < AMOUT_OF_USERS; i++) {
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.firstName();
 
-  const user = await db.user.create({
-    data: {
-      id: faker.datatype.uuid(),
-      firstName,
-      lastName,
-<<<<<<< Updated upstream
-      email: faker.internet.email(firstName, lastName, "acme"),
-=======
-      email: faker.internet.email(firstName, lastName, "acme.com"),
->>>>>>> Stashed changes
-      comments: {
-        create: [
-          {
-            body: faker.lorem.paragraph(3),
-          },
-        ],
+    await db.user.create({
+      data: {
+        id: faker.datatype.uuid(),
+        firstName,
+        lastName,
+        email: faker.internet.email(firstName, lastName, "acme.com"),
+        comments: {
+          create: [
+            {
+              body: faker.lorem.paragraph(3),
+            },
+          ],
+        },
       },
-    },
-  });
-
-  console.log(user);
+    });
+  }
 }
 
 main()

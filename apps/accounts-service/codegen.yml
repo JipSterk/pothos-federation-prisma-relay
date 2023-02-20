@@ -1,18 +1,19 @@
 overwrite: true
-schema: ${NEXT_PUBLIC_ACME_BACKEND_URL}
-documents: ./src/**/*.{ts,tsx}
+schema: http://localhost:${PORT}/graphql
+documents: ./__tests__/**/*.test.ts
 config:
+  federation: true
   scalars:
     DateTime: string
     Upload: File
 generates:
-  ./src/__generated__/acme.generated.ts:
+  ./__tests__/__generated__/acme.generated.ts:
     plugins:
       - add:
           content: "/* eslint-disable */"
       - typescript
 
-  ./src/:
+  ./__tests__/:
     preset: near-operation-file
     presetConfig:
       baseTypesPath: __generated__/acme.generated.ts
