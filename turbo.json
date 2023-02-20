@@ -6,7 +6,10 @@
       "env": ["NEXT_PUBLIC_ACME_BACKEND_URL"],
       "outputs": ["lib/**", "dts/**", "dist/**", ".next/**"]
     },
-    "test": {},
+    "codegen:testing": {},
+    "test": {
+      "dependsOn": ["codegen:testing"]
+    },
     "codegen:web": {
       "dependsOn": ["@acme/gateway#codegen:supergraph"],
       "env": ["NEXT_PUBLIC_ACME_BACKEND_URL"]

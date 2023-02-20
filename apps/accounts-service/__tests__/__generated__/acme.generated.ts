@@ -12,6 +12,8 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: string;
+  _Any: any;
+  _FieldSet: any;
 };
 
 export type Mutation = {

@@ -22,7 +22,7 @@ directive @link(url: String, as: String, for: link__Purpose, import: [link__Impo
 
 type Comment implements Node
   @join__implements(graph: COMMENTS_SERVICE, interface: "Node")
-  @join__type(graph: COMMENTS_SERVICE)
+  @join__type(graph: COMMENTS_SERVICE, key: "id")
 {
   id: ID!
   body: String!
@@ -58,8 +58,10 @@ enum link__Purpose {
 
 type Mutation
   @join__type(graph: ACCOUNTS_SERVICE)
+  @join__type(graph: COMMENTS_SERVICE)
 {
-  createUser(email: String!, firstName: String!, lastName: String!): User!
+  createUser(email: String!, firstName: String!, lastName: String!): User! @join__field(graph: ACCOUNTS_SERVICE)
+  createComment(userId: ID!, body: String!): Comment! @join__field(graph: COMMENTS_SERVICE)
 }
 
 interface Node
@@ -74,6 +76,7 @@ type Query
   @join__type(graph: COMMENTS_SERVICE)
 {
   user(userId: ID!): User @join__field(graph: ACCOUNTS_SERVICE)
+  comment(commentId: ID!): Comment @join__field(graph: COMMENTS_SERVICE)
 }
 
 type User implements Node

@@ -24,4 +24,4 @@ export type CreateUserErrorVariables = Types.Exact<{
 }>;
 
 
-export type CreateUserError = { __typename?: 'Mutation', createUser: { __typename: 'User', email: string, firstName: string, lastName: string } };
+export type CreateUserError = { __typename?: 'Mutation', createUser: { __typename: 'User' } };

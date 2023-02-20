@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": ["**/*"],
+  "extends": "@acme/tsconfig/nextjs",
+  "references": [{ "path": "../" }]
+}

@@ -50,7 +50,7 @@ async function main(port: number): Promise<void> {
       origin:
         NODE_ENV === "production"
           ? ["https://studio.apollographql.com"]
-          : ["https://studio.apollographql.com"],
+          : ["https://studio.apollographql.com", "http://localhost:3000"],
     }),
     json(),
     expressMiddleware(server, {

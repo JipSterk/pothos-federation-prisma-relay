@@ -25,7 +25,14 @@ export type Comment = Node & {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createComment: Comment;
   createUser: User;
+};
+
+
+export type MutationCreateCommentArgs = {
+  body: Scalars['String'];
+  userId: Scalars['ID'];
 };
 
 
@@ -41,7 +48,13 @@ export type Node = {
 
 export type Query = {
   __typename?: 'Query';
+  comment?: Maybe<Comment>;
   user?: Maybe<User>;
+};
+
+
+export type QueryCommentArgs = {
+  commentId: Scalars['ID'];
 };
 
 
