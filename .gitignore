@@ -7,5 +7,6 @@ dts
 .turbo
 !apps/web/src/lib
 
+.env
 .DS_Store
 next-env.d.ts

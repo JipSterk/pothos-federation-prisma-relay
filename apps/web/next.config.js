@@ -4,6 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   reactStrictMode: true,
+  transpilePackages: ["@acme/ui"],
 };
 
 module.exports = nextConfig;

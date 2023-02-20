@@ -1,5 +1,5 @@
 {
-  "name": "@example/database",
+  "name": "@acme/database",
   "version": "0.0.1",
   "private": true,
   "main": "./lib/index.js",
@@ -19,7 +19,8 @@
     "build": "pnpm build:clean && pnpm build:cjs && pnpm build:dts",
     "build:clean": "git clean -dfX esm lib",
     "build:cjs": "swc src -d lib --config-file ../../.swcrc",
-    "build:dts": "tsc"
+    "build:dts": "tsc",
+    "lint": "eslint"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
@@ -28,10 +29,11 @@
     "@prisma/client": "4.10.1"
   },
   "devDependencies": {
-    "@example/eslint-config-custom": "workspace:0.0.1",
-    "@example/tsconfig": "workspace:0.0.1",
+    "@acme/eslint-config": "workspace:0.0.1",
+    "@acme/tsconfig": "workspace:0.0.1",
+    "@faker-js/faker": "7.6.0",
     "@pothos/plugin-prisma": "3.41.0",
-    "@types/node": "18.13.0",
+    "@types/node": "18.14.0",
     "eslint": "8.34.0",
     "prisma": "4.10.1",
     "ts-node": "10.9.1",

@@ -13,9 +13,9 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<typeof Button> = (args) => (
+const Template: StoryFn<typeof Button> = ({ children, ...args }) => (
   <Button onClick={action("pressed")} {...args}>
-    Button
+    {children}
   </Button>
 );
 
@@ -26,6 +26,7 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   intent: "primary",
+  children: "Hello",
 };
 
 /**
@@ -35,4 +36,5 @@ export const Secondary = Template.bind({});
 
 Secondary.args = {
   intent: "secondary",
+  children: "Text",
 };

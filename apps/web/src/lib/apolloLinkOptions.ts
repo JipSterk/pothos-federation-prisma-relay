@@ -25,9 +25,9 @@ export async function getToken() {
   }
 }
 
-const { NEXT_PUBLIC_BACKEND_URL } = process.env;
+const { NEXT_PUBLIC_ACME_BACKEND_URL } = process.env;
 
 export const linkOptions: HttpOptions = {
-  uri: NEXT_PUBLIC_BACKEND_URL,
+  uri: NEXT_PUBLIC_ACME_BACKEND_URL,
   credentials: "include",
 };

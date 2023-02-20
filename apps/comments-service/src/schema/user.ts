@@ -1,4 +1,4 @@
-import { db, User } from "@example/database";
+import { db, User } from "@acme/database";
 import { decodeGlobalID } from "@pothos/plugin-relay";
 import { builder } from "../builder";
 

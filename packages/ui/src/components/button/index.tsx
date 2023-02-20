@@ -15,12 +15,12 @@ const buttonStyles = cva(
     },
   }
 );
-
+`\n\n`;
 /**
  * Button's props
  */
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "type">,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonStyles> {}
 
 /**

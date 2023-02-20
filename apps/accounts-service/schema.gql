@@ -12,8 +12,6 @@ interface Node {
 }
 
 type Query {
-  node(id: ID!): Node @shareable
-  nodes(ids: [ID!]!): [Node]! @shareable
   user(userId: ID!): User
 }
 

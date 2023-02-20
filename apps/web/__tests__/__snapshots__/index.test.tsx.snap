@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render a homepage 1`] = `
+<DocumentFragment>
+  <main />
+</DocumentFragment>
+`;

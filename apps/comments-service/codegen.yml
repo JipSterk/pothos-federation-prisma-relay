@@ -1,0 +1,26 @@
+overwrite: true
+schema: http://localhost:${PORT}/graphql
+documents: ./__tests__/**/*.test.ts
+config:
+  federation: true
+  scalars:
+    DateTime: string
+    Upload: File
+generates:
+  ./__tests__/__generated__/acme.generated.ts:
+    plugins:
+      - add:
+          content: "/* eslint-disable */"
+      - typescript
+
+  ./__tests__/:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: __generated__/acme.generated.ts
+      folder: __generated__
+    config:
+      omitOperationSuffix: true
+    plugins:
+      - add:
+          content: "/* eslint-disable */"
+      - typescript-operations

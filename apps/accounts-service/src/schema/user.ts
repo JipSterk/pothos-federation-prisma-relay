@@ -1,4 +1,4 @@
-import { db, User } from "@example/database";
+import { db, User } from "@acme/database";
 import { builder } from "../builder";
 
 const User = builder.prismaNode("User", {
@@ -32,7 +32,17 @@ builder.mutationField("createUser", (t) =>
       firstName: t.arg.string(),
       lastName: t.arg.string(),
     },
-    resolve: (query, _root, { email, firstName, lastName }) => {
+    resolve: async (query, _root, { email, firstName, lastName }) => {
+      const user = await db.user.findFirst({
+        where: {
+          email,
+        },
+      });
+
+      if (user) {
+        throw new Error("this email is taken");
+      }
+
       return db.user.create({
         data: {
           email,

@@ -3,8 +3,26 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["NEXT_PUBLIC_BACKEND_URL"],
-      "outputs": ["dist/**", ".next/**"]
+      "env": ["NEXT_PUBLIC_ACME_BACKEND_URL"],
+      "outputs": ["lib/**", "dts/**", "dist/**", ".next/**"]
+    },
+    "codegen:testing": {},
+    "test": {
+      "dependsOn": ["codegen:testing"]
+    },
+    "codegen:web": {
+      "dependsOn": ["@acme/gateway#codegen:supergraph"],
+      "env": ["NEXT_PUBLIC_ACME_BACKEND_URL"]
+    },
+    "codegen:supergraph": {
+      "dependsOn": [
+        "@acme/accounts-service#codegen:schema",
+        "@acme/comments-service#codegen:schema"
+      ]
+    },
+    "codegen:schema": {},
+    "codegen": {
+      "dependsOn": ["codegen:schema", "codegen:supergraph", "codegen:web"]
     },
     "db:migrate:deploy": {},
     "db:generate": {

@@ -1,4 +1,4 @@
-import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
+import { ApolloGateway } from "@apollo/gateway";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -12,6 +12,7 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 import { AddressInfo } from "net";
+import { supergraphSdl } from "./utils/localSuperGraphqlSdl";
 
 const { NODE_ENV, PORT } = process.env;
 
@@ -23,18 +24,7 @@ async function main(port: number): Promise<void> {
   const httpServer = http.createServer(app);
 
   const gateway = new ApolloGateway({
-    supergraphSdl: new IntrospectAndCompose({
-      subgraphs: [
-        {
-          name: "users",
-          url: "http://localhost:2001/graphql",
-        },
-        {
-          name: "comments",
-          url: "http://localhost:2002/graphql",
-        },
-      ],
-    }),
+    supergraphSdl,
     debug: NODE_ENV !== "production",
   });
 
@@ -60,7 +50,7 @@ async function main(port: number): Promise<void> {
       origin:
         NODE_ENV === "production"
           ? ["https://studio.apollographql.com"]
-          : ["https://studio.apollographql.com"],
+          : ["https://studio.apollographql.com", "http://localhost:3000"],
     }),
     json(),
     expressMiddleware(server, {
