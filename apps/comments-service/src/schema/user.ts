@@ -1,6 +1,6 @@
+import { builder } from "@/builder";
 import { db, User } from "@acme/database";
 import { decodeGlobalID } from "@pothos/plugin-relay";
-import { builder } from "../builder";
 
 export const UserRef = builder
   .externalRef("User", builder.selection<Pick<User, "id">>("id"))

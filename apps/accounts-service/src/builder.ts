@@ -1,3 +1,4 @@
+import { Context } from "@/types/Context";
 import type PrismaTypes from "@acme/database";
 import { db } from "@acme/database";
 import SchemaBuilder from "@pothos/core";
@@ -8,7 +9,6 @@ import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
 import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
 import ValidationPlugin from "@pothos/plugin-validation";
-import { Context } from "./types/Context";
 
 export const builder = new SchemaBuilder<{
   DefaultInputFieldRequiredness: true;

@@ -1,3 +1,4 @@
+import { isBrowser } from "@/utils/isBrowser";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import {
   ApolloReducerConfig,
@@ -5,7 +6,6 @@ import {
 } from "@apollo/client/cache";
 import { createHttpLink, HttpOptions } from "@apollo/client/core";
 import { setContext } from "@apollo/client/link/context";
-import { isBrowser } from "../utils/isBrowser";
 
 /**
  * Apollo map
