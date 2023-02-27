@@ -1,5 +1,5 @@
+import { builder } from "@/builder";
 import { Comment, db } from "@acme/database";
-import { builder } from "../builder";
 import { UserRef } from "./user";
 
 const Comment = builder.prismaNode("Comment", {

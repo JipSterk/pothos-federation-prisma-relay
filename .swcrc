@@ -10,7 +10,11 @@
         "runtime": "automatic"
       }
     },
-    "target": "es2019"
+    "target": "es2019",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "module": {
     "type": "commonjs"

@@ -1,5 +1,5 @@
+import { builder } from "@/builder";
 import { db, User } from "@acme/database";
-import { builder } from "../builder";
 
 const User = builder.prismaNode("User", {
   findUnique: (id) => ({ id }),

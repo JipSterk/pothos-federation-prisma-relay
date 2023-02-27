@@ -1,3 +1,4 @@
+import { supergraphSdl } from "@/utils/localSuperGraphqlSdl";
 import { ApolloGateway } from "@apollo/gateway";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
@@ -12,7 +13,6 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 import { AddressInfo } from "net";
-import { supergraphSdl } from "./utils/localSuperGraphqlSdl";
 
 const { NODE_ENV, PORT } = process.env;
 

@@ -1,3 +1,4 @@
+import { schema } from "@/schema";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -10,7 +11,6 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 import { AddressInfo } from "net";
-import { schema } from "./schema";
 
 const { NODE_ENV, PORT } = process.env;
 
